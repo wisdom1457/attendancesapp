@@ -25,6 +25,8 @@ render_header('Dashboard', $user);
         <h3>Role Guidance</h3>
         <?php if (in_array($user['role'], ['delivery_person', 'sanitary_seller', 'ac_servicer'], true)): ?>
             <p>Prepare to log deliveries for eggs, chicken, vegetables, sanitary supplies, AC maintenance parts, and more. Approved entries will move to the transaction log.</p>
+        <?php if ($user['role'] === 'delivery_person'): ?>
+            <p>Prepare to log deliveries for eggs, chicken, vegetables, and more. Approved entries will move to the transaction log.</p>
         <?php elseif ($user['role'] === 'checker'): ?>
             <p>Monitor incoming deliveries. You'll soon be able to approve or reject pending records to keep the inventory accurate.</p>
         <?php else: ?>

@@ -16,6 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
 
     if (attempt_login($emailValue, $password)) {
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = trim($_POST['email'] ?? '');
+    $password = $_POST['password'] ?? '';
+
+    if (attempt_login($email, $password)) {
         header('Location: /dashboard.php');
         exit;
     }
@@ -32,6 +38,7 @@ render_header('Login');
         <div class="form-group">
             <label for="email">Email</label>
             <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($emailValue); ?>" required>
+            <input type="email" id="email" name="email" required>
         </div>
         <div class="form-group">
             <label for="password">Password</label>
@@ -40,6 +47,7 @@ render_header('Login');
         <button type="submit">Sign in</button>
     </form>
     <p class="hint">Use one of the seeded accounts after running the setup script or <a href="/signup.php">create a new account</a>.</p>
+    <p class="hint">Use one of the seeded accounts after running the setup script.</p>
 </div>
 <?php
 render_footer();

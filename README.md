@@ -13,6 +13,10 @@ This repository hosts the early stages of a hostel supply management system buil
 - Secure login using hashed passwords and PHP sessions plus self-service sign-up for non-admin roles.
 - Role-aware dashboard with contextual guidance for the next development phases.
 - Admin dashboard that surfaces hostel expenses and allows pricing each service category.
+  - `checker`
+  - `admin`
+- Secure login using hashed passwords and PHP sessions.
+- Role-aware dashboard with contextual guidance for the next development phases.
 - Minimal styling for a clean baseline user interface.
 
 ## Getting Started
@@ -44,6 +48,13 @@ This repository hosts the early stages of a hostel supply management system buil
    - View the aggregate expense total across all recorded services.
    - Review the latest expense entries by service.
    - Adjust the standard price for each service category (eggs, chicken, vegetables, sanitary supplies, AC servicing, etc.).
+   The script creates the SQLite database (stored at `storage/app.sqlite`) and seeds three example accounts:
+
+   | Role             | Email                   | Password     |
+   | ---------------- | ----------------------- | ------------ |
+   | Admin            | `admin@hostel.local`    | `admin123`   |
+   | Checker          | `checker@hostel.local`  | `checker123` |
+   | Delivery Person  | `delivery@hostel.local` | `delivery123`|
 
 2. Start the built-in PHP development server from the `public/` directory:
 
@@ -52,6 +63,7 @@ This repository hosts the early stages of a hostel supply management system buil
    ```
 
 3. Visit [http://localhost:8000](http://localhost:8000) and either log in with one of the seeded accounts or open `/signup.php` to create a delivery, sanitary seller, AC servicer, or checker account for testing.
+3. Visit [http://localhost:8000](http://localhost:8000) and log in with one of the seeded accounts.
 
 ## Roadmap
 
