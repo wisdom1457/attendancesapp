@@ -54,6 +54,13 @@ function render_header(string $title, ?array $user = null): void
         echo '<a href="/payment.php">Payments</a>';
         echo '<a href="/logout.php">Logout</a>';
         echo '</nav>';
+        $links = ['<a href="/dashboard.php">Dashboard</a>'];
+        if ($user['role'] === 'admin') {
+            $links[] = '<a href="/admin_dashboard.php">Admin</a>';
+        }
+        $links[] = '<a href="/logout.php">Logout</a>';
+        echo '<nav>' . implode(' | ', $links) . '</nav>';
+        echo '<nav><a href="/dashboard.php">Dashboard</a> | <a href="/logout.php">Logout</a></nav>';
     }
     echo '</header>';
     echo '<main class="container">';
