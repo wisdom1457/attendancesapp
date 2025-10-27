@@ -11,6 +11,7 @@ This repository hosts the early stages of a hostel supply management system buil
 - Secure login using hashed passwords and PHP sessions.
 - Role-aware dashboard with contextual guidance for the next development phases.
 - Minimal styling for a clean baseline user interface.
+- Tuition, exam, and activities fee payments through the SSLCommerz gateway.
 
 ## Getting Started
 
@@ -41,6 +42,17 @@ This repository hosts the early stages of a hostel supply management system buil
    ```
 
 3. Visit [http://localhost:8000](http://localhost:8000) and log in with one of the seeded accounts.
+
+### Configuring SSLCommerz
+
+The payment page relies on SSLCommerz credentials. Set the following environment variables before opening `/payment.php`:
+
+- `SSLCOMMERZ_STORE_ID` – your store ID.
+- `SSLCOMMERZ_STORE_PASSWORD` (or `SSLCOMMERZ_STORE_PASSWD`) – the store password.
+- `SSLCOMMERZ_SANDBOX` – optional flag (`true`/`false`) to toggle between the sandbox (`true`, default) and live gateways.
+- `SSLCOMMERZ_CURRENCY` – optional ISO currency code, defaults to `BDT`.
+
+For quick testing you can use sandbox credentials from the SSLCommerz merchant panel. When the credentials are missing the portal will show a helpful error instead of redirecting to the gateway.
 
 ## Roadmap
 
