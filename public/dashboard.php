@@ -14,11 +14,11 @@ render_header('Dashboard', $user);
     <article class="dashboard-card">
         <h3>Common Actions</h3>
         <ul>
-            <li><a href="#">Record a delivery</a></li>
+            <li><a href="/payment.php">Submit a school fee payment</a></li>
             <li><a href="#">Review pending approvals</a></li>
             <li><a href="#">View transactions</a></li>
         </ul>
-        <p class="hint">These features will become available in later phases.</p>
+        <p class="hint">More operational tools will become available in later phases.</p>
     </article>
 
     <article class="dashboard-card">

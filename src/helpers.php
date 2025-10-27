@@ -2,6 +2,34 @@
 
 require_once __DIR__ . '/auth.php';
 
+function app_config(): array
+{
+    static $config;
+
+    if ($config === null) {
+        $config = require __DIR__ . '/config.php';
+    }
+
+    return $config;
+}
+
+function sslcommerz_config(): array
+{
+    $config = app_config();
+
+    return $config['sslcommerz'] ?? [];
+}
+
+function base_url(string $path = ''): string
+{
+    $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+    $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+    $base = rtrim($scheme . '://' . $host, '/');
+    $path = ltrim($path, '/');
+
+    return $path ? $base . '/' . $path : $base;
+}
+
 function render_header(string $title, ?array $user = null): void
 {
     if (!$user) {
@@ -21,6 +49,11 @@ function render_header(string $title, ?array $user = null): void
     echo '<h1>Hostel Management System</h1>';
     if ($user) {
         echo '<div class="user-info">Logged in as ' . htmlspecialchars($user['name']) . ' (' . htmlspecialchars($user['role']) . ')</div>';
+        echo '<nav>';
+        echo '<a href="/dashboard.php">Dashboard</a>';
+        echo '<a href="/payment.php">Payments</a>';
+        echo '<a href="/logout.php">Logout</a>';
+        echo '</nav>';
         $links = ['<a href="/dashboard.php">Dashboard</a>'];
         if ($user['role'] === 'admin') {
             $links[] = '<a href="/admin_dashboard.php">Admin</a>';
