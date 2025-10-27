@@ -13,9 +13,11 @@ function start_session(): void
 
 function attempt_login(string $email, string $password): bool
 {
+    $normalizedEmail = strtolower(trim($email));
+
     $pdo = get_db();
     $stmt = $pdo->prepare('SELECT * FROM users WHERE email = :email LIMIT 1');
-    $stmt->execute(['email' => $email]);
+    $stmt->execute(['email' => $normalizedEmail]);
     $user = $stmt->fetch();
 
     if (!$user) {
@@ -30,6 +32,33 @@ function attempt_login(string $email, string $password): bool
     $_SESSION['user_id'] = $user['id'];
 
     return true;
+}
+
+function register_user(string $name, string $email, string $password, string $role): array
+{
+    $allowedRoles = ['delivery_person', 'sanitary_seller', 'ac_servicer', 'checker'];
+
+    if (!in_array($role, $allowedRoles, true)) {
+        throw new InvalidArgumentException('Role is not allowed for self-registration.');
+    }
+
+    $pdo = get_db();
+    $stmt = $pdo->prepare('INSERT INTO users (name, email, password_hash, role) VALUES (:name, :email, :password_hash, :role)');
+    $stmt->execute([
+        'name' => $name,
+        'email' => $email,
+        'password_hash' => password_hash($password, PASSWORD_DEFAULT),
+        'role' => $role,
+    ]);
+
+    $id = (int) $pdo->lastInsertId();
+
+    return [
+        'id' => $id,
+        'name' => $name,
+        'email' => $email,
+        'role' => $role,
+    ];
 }
 
 function current_user(): ?array

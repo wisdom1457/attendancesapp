@@ -10,7 +10,7 @@ This repository hosts the early stages of a hostel supply management system buil
   - `ac_servicer`
   - `checker`
   - `admin`
-- Secure login using hashed passwords and PHP sessions.
+- Secure login using hashed passwords and PHP sessions plus self-service sign-up for non-admin roles.
 - Role-aware dashboard with contextual guidance for the next development phases.
 - Admin dashboard that surfaces hostel expenses and allows pricing each service category.
 - Minimal styling for a clean baseline user interface.
@@ -51,7 +51,7 @@ This repository hosts the early stages of a hostel supply management system buil
    php -S localhost:8000 -t public
    ```
 
-3. Visit [http://localhost:8000](http://localhost:8000) and log in with one of the seeded accounts.
+3. Visit [http://localhost:8000](http://localhost:8000) and either log in with one of the seeded accounts or open `/signup.php` to create a delivery, sanitary seller, AC servicer, or checker account for testing.
 
 ## Roadmap
 

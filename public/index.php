@@ -9,12 +9,13 @@ if (current_user()) {
 }
 
 $error = null;
+$emailValue = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = trim($_POST['email'] ?? '');
+    $emailValue = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
 
-    if (attempt_login($email, $password)) {
+    if (attempt_login($emailValue, $password)) {
         header('Location: /dashboard.php');
         exit;
     }
@@ -30,7 +31,7 @@ render_header('Login');
     <form method="post">
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($emailValue); ?>" required>
         </div>
         <div class="form-group">
             <label for="password">Password</label>
@@ -38,7 +39,7 @@ render_header('Login');
         </div>
         <button type="submit">Sign in</button>
     </form>
-    <p class="hint">Use one of the seeded accounts after running the setup script.</p>
+    <p class="hint">Use one of the seeded accounts after running the setup script or <a href="/signup.php">create a new account</a>.</p>
 </div>
 <?php
 render_footer();
