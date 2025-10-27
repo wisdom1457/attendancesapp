@@ -1,7 +1,8 @@
 <?php
-require_once __DIR__ . '/../src/auth.php';
+declare(strict_types=1);
+
+require_once __DIR__ . '/../src/helpers.php';
 
 logout();
-
-header('Location: /index.php');
-exit;
+set_flash('success', 'You have been signed out.');
+redirect('/index.php');
