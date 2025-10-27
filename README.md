@@ -6,6 +6,7 @@ This repository hosts the early stages of a hostel supply management system buil
 
 - SQLite-backed user store with the following roles:
   - `delivery_person`
+  - `sanitary_seller`
   - `checker`
   - `admin`
 - Secure login using hashed passwords and PHP sessions.
@@ -26,13 +27,14 @@ This repository hosts the early stages of a hostel supply management system buil
    php scripts/setup.php
    ```
 
-   The script creates the SQLite database (stored at `storage/app.sqlite`) and seeds three example accounts. The database file is intentionally excluded from version control, so rerun the setup script whenever you need a fresh copy.
+   The script creates the SQLite database (stored at `storage/app.sqlite`) and seeds four example accounts. The database file is intentionally excluded from version control, so rerun the setup script whenever you need a fresh copy.
 
-   | Role             | Email                   | Password     |
-   | ---------------- | ----------------------- | ------------ |
-   | Admin            | `admin@hostel.local`    | `admin123`   |
-   | Checker          | `checker@hostel.local`  | `checker123` |
-   | Delivery Person  | `delivery@hostel.local` | `delivery123`|
+   | Role                | Email                     | Password       |
+   | ------------------- | ------------------------- | -------------- |
+   | Admin               | `admin@hostel.local`      | `admin123`     |
+   | Checker             | `checker@hostel.local`    | `checker123`   |
+   | Delivery Person     | `delivery@hostel.local`   | `delivery123`  |
+   | Sanitary Seller     | `sanitary@hostel.local`   | `sanitary123`  |
 
 2. Start the built-in PHP development server from the `public/` directory:
 
