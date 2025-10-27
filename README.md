@@ -7,6 +7,7 @@ This repository hosts the early stages of a hostel supply management system buil
 - SQLite-backed user store with the following roles:
   - `delivery_person`
   - `sanitary_seller`
+  - `ac_servicer`
   - `checker`
   - `admin`
 - Secure login using hashed passwords and PHP sessions.
@@ -35,6 +36,7 @@ This repository hosts the early stages of a hostel supply management system buil
    | Checker             | `checker@hostel.local`    | `checker123`   |
    | Delivery Person     | `delivery@hostel.local`   | `delivery123`  |
    | Sanitary Seller     | `sanitary@hostel.local`   | `sanitary123`  |
+   | AC Servicer         | `acservice@hostel.local`  | `acservice123` |
 
 2. Start the built-in PHP development server from the `public/` directory:
 

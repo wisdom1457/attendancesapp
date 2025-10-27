@@ -19,6 +19,7 @@ if ((int) $existing === 0) {
         ['Checker User', 'checker@hostel.local', 'checker123', 'checker'],
         ['Delivery User', 'delivery@hostel.local', 'delivery123', 'delivery_person'],
         ['Sanitary Seller', 'sanitary@hostel.local', 'sanitary123', 'sanitary_seller'],
+        ['AC Servicer', 'acservice@hostel.local', 'acservice123', 'ac_servicer'],
     ];
 
     $stmt = $pdo->prepare('INSERT INTO users (name, email, password_hash, role) VALUES (:name, :email, :password_hash, :role)');
