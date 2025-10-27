@@ -59,4 +59,7 @@ return [
         'charset' => env('DB_CHARSET', 'utf8mb4'),
         'dsn' => env('DB_DSN'),
     ],
+return [
+    'db_path' => __DIR__ . '/../storage/app.sqlite',
+    'session_name' => 'hostel_mgmt_session',
 ];

@@ -3,3 +3,5 @@
 
 # Keep this file under version control.
 !.gitignore
+# Ignore generated SQLite database
+app.sqlite

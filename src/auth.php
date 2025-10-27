@@ -18,6 +18,9 @@ function attempt_login(string $email, string $password): bool
     $pdo = get_db();
     $stmt = $pdo->prepare('SELECT * FROM users WHERE email = :email LIMIT 1');
     $stmt->execute(['email' => $normalizedEmail]);
+    $pdo = get_db();
+    $stmt = $pdo->prepare('SELECT * FROM users WHERE email = :email LIMIT 1');
+    $stmt->execute(['email' => $email]);
     $user = $stmt->fetch();
 
     if (!$user) {
