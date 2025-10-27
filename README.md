@@ -12,6 +12,7 @@ This repository hosts the early stages of a hostel supply management system buil
   - `admin`
 - Secure login using hashed passwords and PHP sessions.
 - Role-aware dashboard with contextual guidance for the next development phases.
+- Admin dashboard that surfaces hostel expenses and allows pricing each service category.
 - Minimal styling for a clean baseline user interface.
 
 ## Getting Started
@@ -28,15 +29,21 @@ This repository hosts the early stages of a hostel supply management system buil
    php scripts/setup.php
    ```
 
-   The script creates the SQLite database (stored at `storage/app.sqlite`) and seeds four example accounts. The database file is intentionally excluded from version control, so rerun the setup script whenever you need a fresh copy.
+   The script creates the SQLite database (stored at `storage/app.sqlite`) and seeds user accounts, service catalogs, and sample expense data. The database file is intentionally excluded from version control, so rerun the setup script whenever you need a fresh copy.
 
-   | Role                | Email                     | Password       |
-   | ------------------- | ------------------------- | -------------- |
-   | Admin               | `admin@hostel.local`      | `admin123`     |
-   | Checker             | `checker@hostel.local`    | `checker123`   |
-   | Delivery Person     | `delivery@hostel.local`   | `delivery123`  |
-   | Sanitary Seller     | `sanitary@hostel.local`   | `sanitary123`  |
-   | AC Servicer         | `acservice@hostel.local`  | `acservice123` |
+| Role                | Email                     | Password       |
+| ------------------- | ------------------------- | -------------- |
+| Admin               | `admin@hostel.local`      | `admin123`     |
+| Checker             | `checker@hostel.local`    | `checker123`   |
+| Delivery Person     | `delivery@hostel.local`   | `delivery123`  |
+| Sanitary Seller     | `sanitary@hostel.local`   | `sanitary123`  |
+| AC Servicer         | `acservice@hostel.local`  | `acservice123` |
+
+   After logging in as an administrator you can open `/admin_dashboard.php` from the top navigation to:
+
+   - View the aggregate expense total across all recorded services.
+   - Review the latest expense entries by service.
+   - Adjust the standard price for each service category (eggs, chicken, vegetables, sanitary supplies, AC servicing, etc.).
 
 2. Start the built-in PHP development server from the `public/` directory:
 
