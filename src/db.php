@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 function get_db(): PDO
 {
@@ -9,29 +10,34 @@ function get_db(): PDO
     }
 
     $config = require __DIR__ . '/config.php';
-    $dbConfig = $config['db'];
+    $dbConfig = $config['db'] ?? [];
 
-    $driver = strtolower((string) ($dbConfig['driver'] ?? 'sqlite'));
+    $driver = $dbConfig['driver'] ?? 'sqlite';
     $dsn = $dbConfig['dsn'] ?? null;
     $username = $dbConfig['username'] ?? null;
     $password = $dbConfig['password'] ?? null;
-    $options = [];
+    $options = [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    ];
 
     if ($driver === 'sqlite') {
-        if ($dsn === null) {
-            $databasePath = $dbConfig['database'] ?? (__DIR__ . '/../storage/app.sqlite');
-            $isAbsolute = str_starts_with($databasePath, '/')
-                || str_starts_with($databasePath, '\\')
-                || (strlen($databasePath) > 1 && ctype_alpha($databasePath[0]) && $databasePath[1] === ':');
+        $databasePath = $dbConfig['database'] ?? (dirname(__DIR__) . '/storage/app.sqlite');
+        $isAbsolute = str_starts_with($databasePath, DIRECTORY_SEPARATOR)
+            || (strlen($databasePath) > 1 && ctype_alpha($databasePath[0]) && $databasePath[1] === ':')
+            || str_contains($databasePath, '://');
 
-            if ($databasePath !== '' && !$isAbsolute) {
-                $databasePath = dirname(__DIR__) . '/' . ltrim($databasePath, '\\/');
-            }
-            if (!file_exists(dirname($databasePath))) {
-                mkdir(dirname($databasePath), 0777, true);
-            }
-            $dsn = 'sqlite:' . $databasePath;
+        if (!$isAbsolute) {
+            $databasePath = dirname(__DIR__) . '/' . ltrim($databasePath, '/');
         }
+
+        if (!is_dir(dirname($databasePath))) {
+            mkdir(dirname($databasePath), 0777, true);
+        }
+
+        $dsn = $dsn ?: 'sqlite:' . $databasePath;
+        $username = null;
+        $password = null;
     } elseif ($dsn === null) {
         $host = $dbConfig['host'] ?? '127.0.0.1';
         $port = $dbConfig['port'] ?? null;
@@ -49,16 +55,7 @@ function get_db(): PDO
         }
     }
 
-    $pdo = new PDO($dsn, $username, $password, $options);
-    $dbPath = $config['db_path'];
-
-    if (!file_exists(dirname($dbPath))) {
-        mkdir(dirname($dbPath), 0777, true);
-    }
-
-    $pdo = new PDO('sqlite:' . $dbPath);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    $pdo = new PDO((string) $dsn, $username, $password, $options);
 
     return $pdo;
 }
