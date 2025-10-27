@@ -21,7 +21,11 @@ function render_header(string $title, ?array $user = null): void
     echo '<h1>Hostel Management System</h1>';
     if ($user) {
         echo '<div class="user-info">Logged in as ' . htmlspecialchars($user['name']) . ' (' . htmlspecialchars($user['role']) . ')</div>';
-        echo '<nav><a href="/dashboard.php">Dashboard</a> | <a href="/logout.php">Logout</a></nav>';
+        echo '<nav>';
+        echo '<a href="/dashboard.php">Dashboard</a> | ';
+        echo '<a href="/payment.php">Payments</a> | ';
+        echo '<a href="/logout.php">Logout</a>';
+        echo '</nav>';
     }
     echo '</header>';
     echo '<main class="container">';

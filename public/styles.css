@@ -44,7 +44,11 @@ label {
 }
 
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+select {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #ccc;
@@ -61,6 +65,19 @@ button {
 }
 
 button:hover {
+    background-color: #3949ab;
+}
+
+.button {
+    display: inline-block;
+    background-color: #283593;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.button:hover {
     background-color: #3949ab;
 }
 
@@ -122,4 +139,10 @@ button:hover {
 
 .dashboard-card a:hover {
     text-decoration: underline;
+}
+
+.payment-form .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
 }
