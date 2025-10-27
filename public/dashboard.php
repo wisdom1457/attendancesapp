@@ -23,6 +23,8 @@ render_header('Dashboard', $user);
 
     <article class="dashboard-card">
         <h3>Role Guidance</h3>
+        <?php if (in_array($user['role'], ['delivery_person', 'sanitary_seller', 'ac_servicer'], true)): ?>
+            <p>Prepare to log deliveries for eggs, chicken, vegetables, sanitary supplies, AC maintenance parts, and more. Approved entries will move to the transaction log.</p>
         <?php if ($user['role'] === 'delivery_person'): ?>
             <p>Prepare to log deliveries for eggs, chicken, vegetables, and more. Approved entries will move to the transaction log.</p>
         <?php elseif ($user['role'] === 'checker'): ?>
