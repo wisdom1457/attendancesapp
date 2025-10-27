@@ -1,0 +1,5 @@
+# Ignore generated SQLite databases; run scripts/setup.php to regenerate.
+*.sqlite
+
+# Keep this file under version control.
+!.gitignore
