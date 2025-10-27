@@ -1,0 +1,214 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.topbar {
+    background-color: #283593;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 1rem;
+}
+
+.container {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #283593;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3949ab;
+}
+
+.flash {
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.flash-error {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ef5350;
+}
+
+.flash-success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #66bb6a;
+}
+
+.footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #eee;
+    margin-top: 2rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.dashboard-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-card h3 {
+    margin-top: 0;
+}
+
+.dashboard-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.dashboard-card li + li {
+    margin-top: 0.5rem;
+}
+
+.dashboard-card a {
+    color: #283593;
+    text-decoration: none;
+}
+
+.dashboard-card a:hover {
+    text-decoration: underline;
+}
+
+.admin-grid .dashboard-card.emphasis {
+    background: linear-gradient(135deg, #3949ab, #5c6bc0);
+    color: #fff;
+}
+
+.total-expenses {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0.5rem 0 0;
+}
+
+.expense-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.expense-list li {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    border-bottom: 1px solid #eee;
+}
+
+.expense-list li:last-child {
+    border-bottom: none;
+}
+
+.expense-description {
+    grid-column: 1 / -1;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.service-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.service-table th,
+.service-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: left;
+}
+
+.service-table th.actions {
+    text-align: center;
+}
+
+.inline-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.inline-form input[type="number"] {
+    max-width: 120px;
+    padding: 0.4rem 0.5rem;
+}
+
+.inline-form button {
+    padding: 0.5rem 1rem;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
